@@ -40,8 +40,7 @@ A Flutter mobile application that guides users through onboarding screens, reque
    ```bash
    git clone <https://github.com/mdxahangir/Flutter-Job-Interview-Task-Assessment-form-Softvence>
    cd travel_alarm_app
-##🎥 Demo Video
-[https://www.loom.com/share/a6337850d84842b681271334a8c59604]
+
 ## 📸 Screenshots
 
 ### 🔔 Alarm Screen
