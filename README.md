@@ -1,57 +1,98 @@
-# Travel Alarm App
+# ✈️ Travel Alarm App
 
-A Flutter mobile application that guides users through onboarding screens, requests location permission, and allows setting travel alarms with notifications.
+A Flutter mobile app that lets travelers set location-based alarms with local notifications.
 
-## 🚀 Features
+---
 
-- **Onboarding Experience**: 3 beautifully designed onboarding screens with skip functionality
-- **Location Integration**: Request and display user's current location with permission handling
-- **Alarm Management**: Set, view, and manage travel alarms with time/date selection
-- **Local Notifications**: Get notified when alarms go off using local notifications
-- **Local Storage**: Alarms are persisted using local storage
-- **Responsive UI**: Fully responsive design that works on different screen sizes
+## 📸 Screenshots, Demo Video & APK
 
-## 📱 Screens
+🔗 [Click here to view](https://drive.google.com/drive/folders/1hZnLk8Dkm1YRXqOKCU89__bUeqGbTawd)
 
-1. **Onboarding Screens** (3 screens with inspirational travel messages)
-2. **Location Screen** - Request and display location access
-3. **Alarm Screen** - View and add travel alarms
+---
 
-## 🛠️ Tech Stack & Packages
+## 📱 Features
 
-- **Flutter SDK**: ^3.10.3
-- **State Management**: Provider (^6.1.2)
-- **Local Storage**: Shared Preferences (^2.2.2)
-- **Permissions**: Permission Handler (^11.1.0)
-- **Location Services**: 
-  - Geolocator (^10.1.0)
-  - Geocoding (^2.1.0)
-- **Notifications**: Flutter Local Notifications (^17.2.1)
-- **Date/Time**: 
-  - Intl (^0.19.0)
-  - Timezone (^0.9.2)
-- **UI Enhancements**: Google Fonts (^6.1.0)
-- **Icons**: Cupertino Icons (^1.0.8)
+- **Onboarding Screens** — 3-page intro with skip option
+- **Location Access** — fetches current GPS location using Geolocator
+- **Set Alarms** — pick date & time, add a label
+- **Local Notifications** — scheduled notifications using `flutter_local_notifications`
+- **Alarm Management** — toggle on/off, swipe to delete, delete dialog
+- **Persistent Storage** — alarms & location saved with SharedPreferences
 
+---
 
-## ⚙️ Installation & Setup
+## 🛠️ Packages Used
 
-1. **Clone the repository**
-   ```bash
-   git clone <https://github.com/mdxahangir/Flutter-Job-Interview-Task-Assessment-form-Softvence>
-   cd travel_alarm_app
+| Package | Purpose |
+|---|---|
+| `provider` | State management |
+| `shared_preferences` | Local storage for alarms & location |
+| `flutter_local_notifications` | Scheduled alarm notifications |
+| `timezone` | Timezone-aware notification scheduling |
+| `geolocator` | GPS location access |
+| `geocoding` | Convert coordinates to address |
+| `permission_handler` | Runtime permissions |
+| `google_fonts` | Poppins font |
+| `intl` | Date & time formatting |
 
-## 📸 Screenshots
+---
 
-### 🔔 Alarm Screen
-![Alarm Screen](assets/images/Alarm01.png)
+## 🚀 Setup Instructions
 
-### 📍 Location Screen
-![Location Screen](assets/images/Location01.png)
+### 1. Clone the repo
 
-### 🚀 Onboarding Screens
+```bash
+git clone https://github.com/YOUR_USERNAME/travel_alarm_app.git
+cd travel_alarm_app
+```
 
-| Screen 1 | Screen 2 | Screen 3 |
-|---------|----------|----------|
-| ![](assets/images/Onboarding01.png) | ![](assets/images/Onboarding02.png) | ![](assets/images/Onboarding03.png) |
+### 2. Install dependencies
 
+```bash
+flutter pub get
+```
+
+### 3. Run the app
+
+```bash
+flutter run
+```
+
+> Minimum Android SDK: **API 29 (Android 10)**
+
+---
+
+## 📂 Project Structure
+
+```
+lib/
+├── common_widgets/
+│   └── onboarding_page.dart
+├── constants/
+│   ├── app_constants.dart
+│   └── colors.dart
+├── features/
+│   ├── alarm/
+│   │   ├── alarm_provider.dart
+│   │   ├── alarm_screen.dart
+│   │   └── add_alarm_screen.dart
+│   ├── location/
+│   │   ├── location_provider.dart
+│   │   └── location_screen.dart
+│   └── onboarding/
+│       └── onboarding_screen.dart
+├── helpers/
+│   ├── notification_helper.dart
+│   └── permission_helper.dart
+├── models/
+│   └── alarm_model.dart
+└── main.dart
+```
+
+---
+
+## 📋 Notes
+
+- Notifications use `exactAllowWhileIdle` mode — works even in Doze mode (Android 10+)
+- Boot receiver included — alarms restore after phone restart
+- Alarm IDs use modulo `% 100000` to prevent integer overflow
